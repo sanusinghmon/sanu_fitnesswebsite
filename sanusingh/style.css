@@ -1,0 +1,166 @@
+/* CSS Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Alata', sans-serif;
+}
+html{scroll-behavior: smooth;}
+body{background-color: #b1b1b1;}
+
+.services{
+    box-shadow: 3px 4px 5px 2px grey;
+}
+/* CSS FOR HEADER SECTION START FROM HERE */
+
+#header-section{
+    /* border: 2px solid chartreuse; */
+    height: 100vh;
+    background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('background.jpg');
+    margin: 0px auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    color: #ffffff;
+    /* position: relative; */
+}
+#logo{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:black;
+    z-index: -1;
+    opacity: 0.5;
+    /* position: sticky; */
+}
+
+#nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+#nav ul li a{
+    color: #ffffff;
+    padding: 15px 20px;
+    text-decoration: none;
+    opacity: 1;
+    font-size: 14px;
+}
+#nav ul li a:hover{
+    color: black;
+    background-color: white;
+    opacity: 1;
+    border-radius: 15px;
+}
+#slogen{
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#slogen h1{
+    font-size: 3rem;
+}
+#slogen p{
+    font-size: 1.2rem;
+}
+/* CSS FOR HEADER SECTION ENDS HERE */
+
+/* CSS FOR SERVICES SECTION START FROM HERE */
+#service-section{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 2px solid #000; */
+    margin: 50px 0px;
+    
+}
+#service-section div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#service-section div img{
+    border-radius: 15px;
+    height: 250px;
+    width: 300px;
+}
+#service-section div h4{
+    padding-top: 10px;
+}
+
+/* CSS FOR SERVICES SECTION ENDS HERE */
+
+/* CSS FOR CLIENTS SECTION START FROM HERE */
+#clients-section{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#clients-section div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#clients-section div img{
+    border-radius: 15px;
+    height: 250px;
+    width: 300px;
+}
+#clients-section div h4{
+    padding-top: 10px;
+}
+/* CSS FOR CLIENTS SECTION ENDS HERE */
+
+/* css for contact section start from here */
+#contact-section{
+    background: grey;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    margin-top: -25px;
+    padding: 20px;
+}
+.form input{
+    width: 50vw;
+    padding: 10px 0px;
+    border-radius: 5px;
+
+}
+.form textarea{
+    resize: none;
+    width: 50%;
+    padding: 10px 0px;
+    border-radius: 5px;
+
+}
+
+.form button{
+    padding: 11px 28px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+}
+/* CSS FOR CONTACT SECTION ENDS HERE */
+footer p{
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    padding: 5px 0;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Days</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+			/* color: #fff; */
+			font-family: 'Roboto', sans-serif;
+		}
+
+		body {
+			width: 100vw;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.maindiv {
+			height: 400px;
+			width: 500px;
+			background-color: #8092d9;
+			display: block;
+			margin: auto;
+			text-align: center;
+			border-radius: 70px;
+		}
+
+		.dayLeft,
+		.maindiv {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.dayLeft p:first-child {
+			font-weight: 900;
+			font-size: 1.1rem;
+		}
+
+		#dayCount {
+			font-size: 4rem;
+		}
+
+		.day {
+			font-size: 1.5rem;
+		}
+
+		@media only screen and (max-width: 600px){
+			.maindiv{
+				width: 100vw;
+				height: 100vh;
+			}
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<div class="maindiv">
+		<h1>Total Days</h1>
+		<h2 id="dayCount"></h2>
+		<p class="day">Starts From</p>
+		<div class="dayLeft">
+			<p>Time</p>
+			<p id="timehappen">?</p>
+		</div>
+	</div>
+
+	<script>
+		// This is for day count and display starting date
+		let x = new Date().getTime();
+		x = x / 1000;
+		x = Math.floor(x); //seconds from 1 jan 1970 to current date
+
+		let y = new Date(2021,11,5,18,02).getTime();
+		y = y / 1000;
+		y = Math.floor(y); // seconds from 1 jan 1970 to 12 jan 2021
+
+		let z = x - y;
+		z = z / (60 * 60 * 24);
+		z = Math.floor(z); // diffrence of x and y
+
+		document.querySelector('#dayCount').innerHTML = z;
+
+		let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+		let date = new Date(2021, 11, 5).toLocaleDateString("en-US", options);
+		let p = document.querySelector(".day");
+		p.innerHTML = `Break Up Date : ${date}`;
+
+		// This is for timer
+
+		
+		const setTimeHappen = () => {
+			let nx = Math.floor(new Date().getTime() / 1000);
+			let ny = Math.floor(new Date(2021,11,5,18,02).getTime() / 1000);
+			let hour = Math.floor(((nx - ny) % (60 * 60 * 24)) / (60*60));
+			let minute = Math.floor((((nx - ny) % (60 * 60 * 24)) % (60*60)) / 60);
+			let second = Math.floor((((nx - ny) % (60 * 60 * 24)) % (60*60)) % 60);
+
+			let timestr = `${hour}h : ${minute}m : ${second}s`;
+			// console.log(hour);
+			document.querySelector('#timehappen').innerText = timestr;
+		}
+
+		setInterval(setTimeHappen,1000);	
+		
+
+	</script>
+</body>
+
+</html>

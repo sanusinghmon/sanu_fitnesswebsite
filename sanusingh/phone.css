@@ -1,0 +1,39 @@
+body{
+    width: 100%;
+}
+
+/* header section of mobile layout */
+#header-section{
+    background-size: cover;
+    background-position: center;
+}
+#navbar{
+    flex-wrap: wrap;
+}
+#navbar div img{
+    /* text-align: center; */
+    display: block;
+    width: 100%;
+    margin: auto;
+}
+#nav{
+    margin-top: 10px;
+}
+#nav ul li a{
+    padding: 0px 8px;
+}
+#nav ul{
+    /* display: block; */
+    width: 100%;
+    margin: auto;
+}
+
+/* *******************header ends here ********************** */
+
+
+/* contact section start from here */
+.form input, .form textarea{
+    width: 100%;
+    margin: 10px auto;
+}
+

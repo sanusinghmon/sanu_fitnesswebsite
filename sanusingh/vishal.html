@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Days</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        /* color: #fff; */
+        font-family: "Roboto", sans-serif;
+      }
+
+      body {
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .maindiv {
+        height: 550px;
+        width: 760px;
+        background-color: #f5f6fa;
+        display: block;
+        margin: auto;
+        text-align: center;
+        border-radius: 70px;
+      }
+
+      #dayLeft {
+        font-size: 4rem;
+      }
+
+      .dayLeft,
+      .maindiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .dayLeft p:first-child {
+        font-weight: 900;
+        font-size: 2.5rem;
+      }
+
+      #dayCount {
+        font-size: 10rem;
+      }
+
+      .day {
+        font-size: 2.5rem;
+      }
+      .maindiv h1 {
+        font-size: 4rem;
+      }
+      @media only screen and (max-width: 600px) {
+        .maindiv {
+          width: 100vw;
+          height: 100vh;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="maindiv">
+      <h1>Total Days</h1>
+      <h2 id="dayCount"></h2>
+      <p class="day">Starts From</p>
+      <div class="dayLeft">
+        <p>Time Left</p>
+        <p id="dayLeft">?</p>
+      </div>
+    </div>
+
+    <script>
+      "use strict";
+      // This is for day count and display starting date
+      let x = new Date().getTime();
+      x = x / 1000;
+      x = Math.floor(x); //seconds from 1 jan 1970 to current date
+
+      let y = new Date(2022, 2, 14).getTime();
+      y = y / 1000;
+      y = Math.floor(y); // seconds from 1 jan 1970 to 12 jan 2021
+
+      let z = x - y;
+      z = z / (60 * 60 * 24);
+      z = Math.floor(z); // diffrence of x and y
+
+      document.querySelector("#dayCount").innerHTML = z;
+
+      let options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      let date = new Date(2022, 2, 14).toLocaleDateString("en-US", options);
+      let p = document.querySelector(".day");
+      p.innerHTML = `Joining Date : ${date}`;
+
+      // This is for count leaving date
+
+      const leftDays = () => {
+        try {
+          let a = new Date().getTime();
+          a = a / 1000;
+          a = Math.floor(a); //seconds from 1 jan 1970 to current data
+
+          let b = new Date(2023, 1, 28).getTime();
+          b = b / 1000;
+          b = Math.floor(b); // seconds from 1 jan 1970 to 12 jan 2022
+
+          let c = b - a;
+          c = c / (60 * 60 * 24);
+          let daysLeft = Math.floor(c); // diffrence of a and b
+          let hourLeft = Math.floor(
+            (b - a - daysLeft * (60 * 60 * 24)) / (60 * 60)
+          );
+          let minutesLeft = Math.floor(
+            (b - a - daysLeft * (60 * 60 * 24) - hourLeft * (60 * 60)) / 60
+          );
+          let secondsLeft =
+            b -
+            a -
+            daysLeft * (60 * 60 * 24) -
+            hourLeft * (60 * 60) -
+            minutesLeft * 60;
+
+          daysLeft = String(daysLeft);
+          hourLeft = String(hourLeft);
+          minutesLeft = String(minutesLeft);
+          secondsLeft = String(secondsLeft);
+
+          if (daysLeft.length == 1) {
+            daysLeft = "0" + daysLeft;
+          }
+          if (hourLeft.length == 1) {
+            hourLeft = "0" + hourLeft;
+          }
+          if (minutesLeft.length == 1) {
+            minutesLeft = "0" + minutesLeft;
+          }
+          if (secondsLeft.length == 1) {
+            secondsLeft = "0" + secondsLeft;
+          }
+
+          document.querySelector(
+            "#dayLeft"
+          ).innerHTML = `${daysLeft} : ${hourLeft} : ${minutesLeft} : ${secondsLeft}`;
+          // document.querySelector('#dayLeft').innerText = `?`;
+          let interval = setInterval(leftDays, 1000);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      leftDays();
+    </script>
+  </body>
+</html>
